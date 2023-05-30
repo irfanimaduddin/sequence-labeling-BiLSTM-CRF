@@ -1,5 +1,12 @@
-tensorflow==1.15.2
-numpy==1.15.4
-pandas==0.20.3
-Django==1.11.29
-jieba==0.39
+# tensorflow==1.15.2
+# numpy==1.15.4
+# pandas==0.20.3
+# Django==1.11.29
+# jieba==0.39
+
+tensorflow
+tensorflow-addons
+numpy
+pandas
+Django
+jieba
