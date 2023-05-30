@@ -9,7 +9,8 @@ import argparse
 import random
 import numpy as np
 import os
-from engines.BiLSTM_CRFs import BiLSTM_CRFs
+from engines.BiLSTM_CRFs_v2 import BiLSTM_CRFs
+# from engines.model import BiLSTM_CRFs
 from engines.DataManager import DataManager
 from engines.Configer import Configer
 from engines.utils import get_logger
