@@ -23,6 +23,7 @@ class DataManager:
 
         self.train_file = configs.datasets_fold + "/" + configs.train_file
         self.dev_file = configs.datasets_fold + "/" + configs.dev_file
+        self.dev_file = None
         self.test_file = configs.datasets_fold + "/" + configs.test_file
 
         self.output_test_file = configs.datasets_fold + "/" + configs.output_test_file
@@ -258,10 +259,11 @@ class DataManager:
 
     def prepare_single_sentence(self, sentence):
         if self.labeling_level == 'word':
-            if self.check_contain_chinese(sentence):
-                sentence = list(jieba.cut(sentence))
-            else:
-                sentence = list(sentence.split())
+            # if self.check_contain_chinese(sentence):
+            #     sentence = list(jieba.cut(sentence))
+            # else:
+            #     sentence = list(sentence.split())
+            sentence = list(sentence.split())
         elif self.labeling_level == 'char':
             sentence = list(sentence)
 
