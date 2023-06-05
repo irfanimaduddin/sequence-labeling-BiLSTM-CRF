@@ -2,10 +2,10 @@ import math, os
 from engines.utils import metrics, save_csv_, extractEntity
 import numpy as np
 import tensorflow as tf
-# import tensorflow_addons as tfa
+import tensorflow_addons as tfa
 import pandas as pd
-from crf import *
 import time
+from engines.crf import crf_log_likelihood, crf_decode
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 tf.compat.v1.disable_eager_execution()
@@ -194,11 +194,11 @@ class BiLSTM_CRFs(object):
             self.loss = tf.reduce_mean(losses)
         else:
             # crf
-            self.log_likelihood, self.transition_params = crf_log_likelihood(
+            self.log_likelihood, self.transition_params = tfa.text.crf_log_likelihood(
                 self.logits, self.targets, self.length)
             # self.log_likelihood, self.transition_params = tf.contrib.crf.crf_log_likelihood(
             #     self.logits, self.targets, self.length)
-            self.batch_pred_sequence, self.batch_viterbi_score = crf_decode(self.logits,
+            self.batch_pred_sequence, self.batch_viterbi_score = tfa.text.crf_decode(self.logits,
                                                                                            self.transition_params,
                                                                                            self.length)
             # self.batch_pred_sequence, self.batch_viterbi_score = tf.contrib.crf.crf_decode(self.logits,
